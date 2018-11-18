@@ -1,0 +1,3 @@
+[MASTER]
+extension-pkg-whitelist=gimp
+unsafe-load-any-extension=yes
