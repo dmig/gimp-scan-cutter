@@ -212,7 +212,7 @@ gimpfu.register(
     "Find and cut out parts of an image. Will also try to deskew them (deskew plugin required). "\
         "Useful for multiple photos scanned at once.",
     "Dmitriy Geels", "Dmitriy Geels", "2018",
-    "Cut out photos",
+    "_Cut out photos",
     "RGB*,GRAY*", # type of image it works on (*, RGB, RGB*, RGBA, GRAY etc...)
     [ # pylint: disable=C0301,C0326
         (gimpfu.PF_IMAGE,    "image",        "Current image",            None),
@@ -240,7 +240,7 @@ gimpfu.register(
         (gimpfu.PF_INT, 'extracted', 'extracted images count')
     ],
     cutter_single_image,
-    menu="<Image>/Tools/Scan cutter")  # second item is menu location
+    menu="<Image>/Tools/Scan c_utter")  # second item is menu location
 
 def cutter_batch_images(
         src_dir, src_ftype,
@@ -288,11 +288,11 @@ gimpfu.register(
     "Find and cut out parts of an image. Will also try to deskew them (deskew plugin required). "\
         "Useful for multiple photos scanned at once.",
     "Dmitriy Geels", "Dmitriy Geels", "2018",
-    "Batch cut out photos",
-    "RGB*,GRAY*", # type of image it works on (*, RGB, RGB*, RGBA, GRAY etc...)
+    "_Batch cut out photos...",
+    "",
     [ # pylint: disable=C0301,C0326
         (gimpfu.PF_DIRNAME,  "src_dir",      "Source directory",         ""),
-        (gimpfu.PF_DRAWABLE, "src_ftype",    "File Type",                0, ("jpg", "png", "tiff")),
+        (gimpfu.PF_OPTION,   "src_ftype",    "File Type",                0, ("jpg", "png", "tiff")),
         (gimpfu.PF_SPINNER,  "limit",        "Max number of items (0 unlimited)", 0, (0, 1000, 10)),
         (gimpfu.PF_SPINNER,  "sl_thresh",    "Selection Threshold",      25, (0, 255, 1)),
         (gimpfu.PF_SPINNER,  "sz_thresh",    "Size Threshold",           100, (0, 2000, 10)),
@@ -314,7 +314,7 @@ gimpfu.register(
     [
         (gimpfu.PF_INT, 'extracted', 'extracted images count')
     ],
-    cutter_single_image,
-    menu="<Image>/Tools/Scan cutter")  # second item is menu location
+    cutter_batch_images,
+    menu="<Toolbox>/Tools/Scan c_utter")  # second item is menu location
 
 gimpfu.main()
