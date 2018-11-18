@@ -265,7 +265,7 @@ def cutter_batch_images(
             pdb.gimp_progress_set_text('Error loading %s...' % (fn, ))
             continue
 
-        cnt = cutter_single_image(
+        cutter_single_image(
             image, image.active_layer,
             limit, sl_thresh, sz_thresh,
             bg_manual, bg_color, bg_corner, bg_x, bg_y,
@@ -274,11 +274,6 @@ def cutter_batch_images(
         )
 
         pdb.gimp_delete_image(image)
-
-        if limit:
-            limit -= cnt
-            if limit <= 0:
-                break
 
     pdb.gimp_progress_end()
 
@@ -293,7 +288,7 @@ gimpfu.register(
     [ # pylint: disable=C0301,C0326
         (gimpfu.PF_DIRNAME,  "src_dir",      "Source directory",         ""),
         (gimpfu.PF_OPTION,   "src_ftype",    "File Type",                0, ("jpg", "png", "tiff")),
-        (gimpfu.PF_SPINNER,  "limit",        "Max number of items (0 unlimited)", 0, (0, 1000, 10)),
+        (gimpfu.PF_SPINNER,  "limit",        "Max number of items",      1, (1, 100, 1)),
         (gimpfu.PF_SPINNER,  "sl_thresh",    "Selection Threshold",      25, (0, 255, 1)),
         (gimpfu.PF_SPINNER,  "sz_thresh",    "Size Threshold",           100, (0, 2000, 10)),
         (gimpfu.PF_TOGGLE,   "bg_manual",    "Manually set background colour", False),
