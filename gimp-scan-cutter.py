@@ -273,7 +273,7 @@ def cutter_batch_images(
             save_same, save_dir, save_ftype, save_dpi, jpg_qual, save_suffix
         )
 
-        pdb.gimp_delete_image(image)
+        pdb.gimp_image_delete(image)
 
     pdb.gimp_progress_end()
 
